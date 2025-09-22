@@ -1,35 +1,32 @@
 print("Welcome to the Shop!")
+shopping_cart = []
+response = input("Would you like to add something to your cart? y/n: ").lower()
 
-response = input("Would you like to add something to your cart? Y/N: ").capitalize()
+while True:
 
-if response == "Y":
-    answer = input("What would you like to add to your cart?: ")
-    print(f"You have now put {answer} in your cart!")
+   if response == "y":
+       item = input("What would you like to add to your cart?: ").lower()
+       print(f"You have now put {item.capitalize()} in your cart!")
+       shopping_cart.append(item)
+   else:
+       print("Thank you for shopping!")
+       break
 
-    response2 = input("Would you like to remove anything from your cart? Y/N: ").capitalize()
+   while True:
+       response = input("Would you like to remove anything from your cart? y/n: ").lower()
+       if response == "y":
+           removed_item = input("What would you like to remove?: ").lower()
+           if removed_item in shopping_cart:
+               shopping_cart.remove(removed_item)
+               break
+           else:
+               print(f"{removed_item.capitalize()} is not in your cart!")
+       else:
+           break
 
-    if response2 == "Y":
-        answer2 = input(f"Would you like to remove {answer.lower()}? Y/N: ").capitalize()
+   response = input("Would you like to keep shopping? y/n: ").lower()
+   if response == "n":
+       print("Thank you for shopping with us!")
+       break
 
-        if answer2 == "Y":
-            print(f"You have successfully removed {answer}!")
-        else:
-            print(f"{answer} remains in your cart.")
-            print("Thank you for shopping with us!")
-    else:
-        stay = input("Would you like to keep shopping or leave the shop? S/L: ").capitalize()
-
-        if stay == "S":
-            more = input("What would you like to have?: ")
-            print(f"{more} has been added to your cart!")
-        else:
-            print("Thank you for shopping with us!")
-
-            choice = input("Keep shopping or leave? (S/L): ").capitalize()
-            if choice == "L":
-                print("Thanks for shopping!")
-            'break'
-
-else:
-    print("Cart empty. Please try again!")
-
+print(shopping_cart)
